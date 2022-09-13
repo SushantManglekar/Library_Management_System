@@ -1,37 +1,27 @@
-import email
-from email.mime import message
-import json
-import pkgutil
 from django.shortcuts import render,redirect
-from django.http import HttpRequest,HttpResponse,JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import request
-from rest_framework import generics
 from .models import Book
 from .forms import ManageForm
-from .serializers import BookSerializer
-from LMSapp import serializers
+
 
 # View for the root URL
 def index(request):
     return render(request, 'index.html')
 
 
-
-# View for the dmin_login/ URL
+# View for the admin_login
 def admin_login(request):
     if request.method == 'POST':
         
         username = request.POST.get('username')
         password = request.POST.get('psw')
-        # uthentication of user
+        # authentication of user
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request,user)
-            return redirect('show') # redirecting to Booklist page
+            return redirect('show') # redirecting to view page
         else:
             # Validating credentials
             messages.info(request,'Invalid Credentials') 
@@ -46,14 +36,17 @@ def admin_signup(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('psw')
+         # validating duplicate entry
         if User.objects.filter(email= email).exists():
-            messages.info(request, "Email already exists!") # validating duplicate entry
+            messages.info(request, "Email already exists!")
             return redirect('admin_signup')
+            # validating duplicate entry
         elif User.objects.filter(username= username).exists():
-            messages.info(request, "username already exists!") # validating duplicate entry
+            messages.info(request, "username already exists!") 
             return redirect('admin_signup')
         else:
-            user = User.objects.create_user(username=username, email=email, password=password) # Creating user in database
+            # Creating user in database
+            user = User.objects.create_user(username=username, email=email, password=password) 
             user.save()
             print("User Created!")
             return redirect('admin_login')
@@ -61,7 +54,7 @@ def admin_signup(request):
         return render(request, "admin_signup.html")
 
 
-
+# view for Creating book instance
 
 def req(request):  
     if request.method == "POST":  
@@ -76,19 +69,18 @@ def req(request):
         form = ManageForm()  
     return render(request,'add.html',{'form':form})  
 
-
+# view for Read operation
 
 def show(request):  
     books = Book.objects.all()  
     return render(request,"show.html",{'books':books})  
 
+#view for Update operation
+
 
 def edit(request, id):  
     book = Book.objects.get(id=id)  
     return render(request,'edit.html', {'book':book})
-
-
-
 def update(request, id):  
     book = Book.objects.get(id=id)  
     form = ManageForm(request.POST, instance = book)  
@@ -97,12 +89,14 @@ def update(request, id):
         return redirect("/show")  
     return render(request, 'edit.html', {'book': book})  
 
+# view for Delete operation
+
 def destroy(request, id):  
     book = Book.objects.get(id=id)  
     book.delete()  
     return redirect("/show")  
 
-
+# view for studetns view only access
 def student(request):
     books = Book.objects.all()
     return render(request,'student.html',{'books':books})

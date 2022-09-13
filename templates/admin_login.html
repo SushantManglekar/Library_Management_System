@@ -64,6 +64,14 @@
       h3 {
         color: red;
       }
+      body {
+        background: url("https://img.freepik.com/premium-photo/book-stack-library-room-blurred-bookshelf-background_42691-514.jpg?w=2000")
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,42 +82,41 @@
     {% for message in messages %}
     <h3>{{message}}</h3>
     {% endfor %}
-    <form method="post" action="admin_login">
-      {% csrf_token %}
-      <div class="container">
-        <center><h1>Admin Login Panel</h1></center>
-        <p>
-          Please fill in your Username and Password below to Log into your
-          account.
-        </p>
-        <hr />
+    <center>
+      <form method="post" action="admin_login" style="width: 30%">
+        {% csrf_token %}
+        <div class="container">
+          <center><h1>Admin Login</h1></center>
 
-        <label for="username"><b>Username</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="username"
-          id="username"
-          required
-        />
+          <hr />
 
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          id="psw"
-          required
-        />
+          <label for="username"><b>Username</b></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            id="username"
+            required
+          />
 
-        <hr />
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            id="psw"
+            required
+          />
 
-        <button type="submit" class="registerbtn">Login</button>
-      </div>
+          <hr />
 
-      <div class="container signin">
-        <p>Don't have an account? <a href="admin_signup">Sign up</a>.</p>
-      </div>
-    </form>
+          <button type="submit" class="registerbtn">Login</button>
+        </div>
+
+        <div class="container signin">
+          <p>Don't have an account? <a href="admin_signup">Sign up</a>.</p>
+        </div>
+      </form>
+    </center>
   </body>
 </html>

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       .button {
-        border: none;
-        color: white;
+        color: rgb(13, 12, 12);
+        border: bisque;
         padding: 15px 32px;
         text-align: center;
-        text-decoration: none;
+        text-decoration: grey;
         display: inline-block;
         font-size: 16px;
         margin: 4px 2px;
@@ -18,25 +18,56 @@
       }
 
       .button1 {
-        background-color: #4caf50;
-      } /* Green */
+        background-color: #1994bd;
+
+        margin: 0;
+        position: absolute;
+        top: 60%;
+        left: 70%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
       .button2 {
-        background-color: #008cba;
-      } /* Blue */
+        background-color: #1994bd;
+
+        margin: 0;
+        position: absolute;
+        top: 60%;
+        left: 55%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      body {
+        background: url("https://img.freepik.com/premium-photo/book-stack-library-room-blurred-bookshelf-background_42691-514.jpg?w=2000")
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      h1 {
+        font-size: 50px;
+        margin: 0;
+        position: absolute;
+        top: 40%;
+        left: 45%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
     </style>
     <title>Library Management System</title>
   </head>
   <body>
     <center>
-      <h1>Welcome to Library Management System</h1>
+      <h1>Library Management System</h1>
       <a href="admin_login">
-        <button class="button button1">Manage Library</button>
+        <button class="button button1">Admin</button>
       </a>
       <a href="student">
-        <button class="button button2">View Library</button>
+        <button class="button button2">Student</button>
       </a>
       <br />
-      <p>You must have admin credentials to manage the Library.</p>
     </center>
   </body>
 </html>

@@ -64,6 +64,14 @@
       h5 {
         color: red;
       }
+      body {
+        background: url("https://img.freepik.com/premium-photo/book-stack-library-room-blurred-bookshelf-background_42691-514.jpg?w=2000")
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,49 +82,51 @@
     {% for message in messages %}
     <h5>{{message}}</h5>
     {% endfor %}
-    <form method="post" action="admin_signup">
-      {% csrf_token %}
-      <div class="container">
-        <center>
-          <h1>Admin Sign up Panel</h1>
-        </center>
-        <p>Please fill in this form to create an account.</p>
-        <hr />
-        <label for="username"><b>User Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter User Name "
-          name="username"
-          id="username"
-          required
-        />
+    <center>
+      <form method="post" action="admin_signup" style="width: 30%">
+        {% csrf_token %}
+        <div class="container">
+          <center>
+            <h1>Admin Sign up</h1>
+          </center>
 
-        <label for="email"><b>Email</b></label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          id="email"
-          required
-        />
+          <hr />
+          <label for="username"><b>User Name</b></label>
+          <input
+            type="text"
+            placeholder="Enter User Name "
+            name="username"
+            id="username"
+            required
+          />
 
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          id="psw"
-          required
-        />
+          <label for="email"><b>Email</b></label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="email"
+            id="email"
+            required
+          />
 
-        <hr />
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            id="psw"
+            required
+          />
 
-        <button type="submit" class="registerbtn">Sign up</button>
-      </div>
+          <hr />
 
-      <div class="container signin">
-        <p>Already have an account? <a href="admin_login">Log in</a>.</p>
-      </div>
-    </form>
+          <button type="submit" class="registerbtn">Sign up</button>
+        </div>
+
+        <div class="container signin">
+          <p>Already have an account? <a href="admin_login">Log in</a>.</p>
+        </div>
+      </form>
+    </center>
   </body>
 </html>
