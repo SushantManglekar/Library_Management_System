@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Books Record</title>
 
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
     <table class="table table-striped table-bordered table-sm">
@@ -15,6 +15,7 @@
           <th>Title</th>
           <th>Author</th>
           <th>No of Books Available</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -24,11 +25,18 @@
           <td>{{ book.title }}</td>
           <td>{{ book.author }}</td>
           <td>{{ book.no_of_books_available }}</td>
+          <td>
+            <a href="/edit/{{ book.id }}"
+              ><span class="glyphicon glyphicon-pencil">Edit</span></a
+            >
+            <a href="/delete/{{ book.id }}">Delete</a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     <br />
     <br />
+    <center><a href="/req" class="btn btn-primary">Add New Record</a></center>
   </body>
 </html>
